@@ -4,3 +4,6 @@ kube_type_of_node: front
 kube_server: "{{ ansible_default_ipv4.address }}"
 # Allow privileged containers
 kube_allow_privileged: true
+
+#kube_hostname_override: null
+#kube_address_override: null
