@@ -11,4 +11,4 @@ kube_kubelet_labels: []
 
 kube_kubelet_arbitrary_args:
   - "--allow-privileged={{ kube_allow_privileged|lower }}"
-  - "--node-labels=\"{{ kube_kubelet_labels|join(',') }}\""
+  - "--node-labels='{{ kube_kubelet_labels|join(',') }}'"
