@@ -39,16 +39,20 @@
 - name: k8s client configuration
   lineinfile:
     dest: /etc/kubernetes/kubelet
-    line: KUBELET_ADDRESS="--address={{ kube_address_override|default(ansible_default_ipv4.address) }}"
+    line: KUBELET_ADDRESS="--address={{ kube_kubelet_address }}"
     regexp: "^KUBELET_ADDRESS"
   notify: restart kubelet
+  when:
+    - kube_kubelet_address is defined
 
 - name: k8s client configuration | KUBELET_HOSTNAME
   lineinfile:
     dest: /etc/kubernetes/kubelet
-    line: KUBELET_HOSTNAME="--hostname_override={{ kube_hostname_override|default(ansible_default_ipv4.address) }}"
+    line: KUBELET_HOSTNAME="--hostname_override={{ kube_kubelet_hostname }}"
     regexp: "^KUBELET_HOSTNAME="
   notify: restart kubelet
+  when:
+    - kube_kubelet_hostname is defined
 
 - name: k8s client configuration | KUBELET_ARGS
   lineinfile:
