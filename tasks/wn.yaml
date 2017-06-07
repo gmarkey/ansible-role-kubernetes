@@ -16,14 +16,20 @@
 - name: Overlay | configure etcd url
   lineinfile:
     dest: /etc/sysconfig/flanneld
-    line: FLANNEL_ETCD="http://{{ kube_server }}:2379"
-    regexp: "^FLANNEL_ETCD="
+    line: FLANNEL_ETCD_ENDPOINTS="-etcd-endpoints=http://{{ kube_server }}:2379"
+    regexp: "^FLANNEL_ETCD_ENDPOINTS="
 
 - name: Overlay | configure etcd config key
   lineinfile:
     dest: /etc/sysconfig/flanneld
-    line: FLANNEL_ETCD_PREFIX="/atomic.io/network"
+    line: FLANNEL_ETCD_PREFIX="-etcd-prefix=/atomic.io/network"
     regexp: "^FLANNEL_ETCD_PREFIX="
+
+- name: Overlay | combine startup options
+  lineinfile:
+    dest: /etc/sysconfig/flanneld
+    line: FLANNEL_OPTIONS="${FLANNEL_ETCD_ENDPOINTS} ${FLANNEL_ETCD_PREFIX}"
+    regexp: "^FLANNEL_OPTIONS="
 
 - name: Flannel systemd | create service.d
   file:
