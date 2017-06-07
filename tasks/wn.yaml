@@ -22,7 +22,7 @@
 - name: Overlay | configure etcd config key
   lineinfile:
     dest: /etc/sysconfig/flanneld
-    line: FLANNEL_ETCD_PREFIX="/atomic01/network"
+    line: FLANNEL_ETCD_PREFIX="/atomic.io/network"
     regexp: "^FLANNEL_ETCD_PREFIX="
 
 - name: Flannel systemd | create service.d
