@@ -16,7 +16,7 @@
 - name: Overlay | configure etcd url
   lineinfile:
     dest: /etc/sysconfig/flanneld
-    line: FLANNEL_ETCD_ENDPOINTS="http://{{ kube_server }}:2379"
+    line: FLANNEL_ETCD="http://{{ kube_server }}:2379"
     regexp: "^FLANNEL_ETCD="
 
 - name: Overlay | configure etcd config key
