@@ -6,8 +6,8 @@ kube_server: "{{ ansible_default_ipv4.address }}"
 kube_allow_privileged: true
 
 kube_kubelet_labels: []
-#kube_kubelet_hostname: null
-#kube_kubelet_address: null
+kube_kubelet_hostname: "{{ ansible_hostname }}"
+kube_kubelet_address: 0.0.0.0
 
 kube_kubelet_arbitrary_args:
   - "--allow-privileged={{ kube_allow_privileged|lower }}"
