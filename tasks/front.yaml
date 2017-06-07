@@ -76,5 +76,5 @@
   register: flannelconf
 
 - name: Configure subnet
-  command: curl -L http://localhost:2379/v2/keys/atomic01/network/config -XPUT --data-urlencode value@/tmp/flanneld-conf.json
+  command: curl -L http://localhost:2379/v2/keys/atomic.io/network/config -XPUT --data-urlencode value@/tmp/flanneld-conf.json
   when: flannelconf.changed
