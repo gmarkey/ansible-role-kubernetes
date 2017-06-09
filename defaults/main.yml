@@ -12,3 +12,5 @@ kube_kubelet_address: 0.0.0.0
 kube_kubelet_arbitrary_args:
   - "--allow-privileged={{ kube_allow_privileged|lower }}"
   - "--node-labels='{{ kube_kubelet_labels|join(',') }}'"
+
+kube_use_registry_cache: false

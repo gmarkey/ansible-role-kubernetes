@@ -12,6 +12,8 @@
     line: OPTIONS='--registry-mirror=http://"{{ kube_server }}:5000" --selinux-enabled --log-driver=journald'
     regexp: "^OPTIONS"
   notify: restart docker
+  when:
+    - kube_use_registry_cache
 
 - name: Overlay | startup options
   lineinfile:
