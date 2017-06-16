@@ -9,7 +9,7 @@
 - name: Configure Docker to use registry cache
   lineinfile:
     dest: /etc/sysconfig/docker
-    line: OPTIONS='--registry-mirror=http://"{{ kube_server }}:5000" --selinux-enabled --log-driver=journald'
+    line: OPTIONS='--registry-mirror=http://{{ kube_server }}:5000 --selinux-enabled --log-driver=journald'
     regexp: "^OPTIONS"
   notify: restart docker
   when:
